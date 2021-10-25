@@ -84,7 +84,7 @@ public class BookingService {
             BookingInfoEntity bookingInfo = bookingInfoOptional.get();
             int transactionId = restTemplate.postForObject(url, paymentDetails, Integer.class);
             bookingInfo.setTransactionId(transactionId);
-            bookingDao.save(bookingInfo);
+            bookingDao.update(bookingInfo);
             String message = "Booking confirmed for user with aadhaar number: " + bookingInfo.getAadharNumber() +
                     " | " + " Here are the booking details: " + bookingInfo.toString();
             producer.send(new ProducerRecord<String, String>("message", "message", message));

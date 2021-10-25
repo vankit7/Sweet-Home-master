@@ -21,8 +21,8 @@ public class PaymentController {
     PaymentService paymentService;
 
     @PostMapping("/transaction")
-    public ResponseEntity<PaymentInfoEntity> paymentDetails(@RequestBody Paymentdto bookingRequest) throws Exception {
+    public int paymentDetails(@RequestBody Paymentdto bookingRequest) throws Exception {
         PaymentInfoEntity paymentInfo = PaymentService.savePaymenttransaction(bookingRequest);
-        return new ResponseEntity<PaymentInfoEntity>(paymentInfo, HttpStatus.CREATED);
+        return paymentInfo.getTransactionId();
     }
 }
