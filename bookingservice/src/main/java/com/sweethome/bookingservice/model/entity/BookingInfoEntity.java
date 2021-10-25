@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.awt.print.Book;
 import java.util.Date;
 
-@Table(name = "Hotel_Booking")
+@Table(name = "booking")
 @Entity
 public class BookingInfoEntity {
 
@@ -22,7 +22,7 @@ public class BookingInfoEntity {
     @NotNull
     private int roomPrice;
 
-    private int transactionId;
+    private int transactionId = 0;
     //@Temporal(TemporalType.DATE)
     //@CreatedDate
     private Date bookedOn;
@@ -41,8 +41,6 @@ public class BookingInfoEntity {
 
     public void setRoomPrice(int roomPrice) {
         this.roomPrice = roomPrice;
-    }
-    public BookingInfoEntity(){
     }
 
     public Date getToDate() {

@@ -69,13 +69,13 @@ public class BookingService {
         return bookingDao.save(bookingInfo);
     }
 
-    public BookingInfoEntity doPayment(PaymentDto paymentDetails) throws Exception {
+    public BookingInfoEntity doPayment(PaymentDto paymentDetails) throws Exception, CustomException {
 
         //call payment service and get paymentID to save booking
         System.out.println(paymentDetails.toString());
         String url = this.paymentServiceUrl + "/transaction";
 
-        if (!(paymentDetails.getPaymentMode().trim().equalsIgnoreCase("UPI") | paymentDetails.getPaymentMode().trim().equalsIgnoreCase("CARD"))) {
+        if (!(paymentDetails.getPaymentMode().trim().equalsIgnoreCase("UPI") || paymentDetails.getPaymentMode().trim().equalsIgnoreCase("CARD"))) {
             throw new CustomException("Invalid mode of payment");
         }
         int bookingId = paymentDetails.getBookingId();

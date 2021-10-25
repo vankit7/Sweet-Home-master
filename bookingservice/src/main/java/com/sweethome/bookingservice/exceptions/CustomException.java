@@ -1,6 +1,24 @@
 package com.sweethome.bookingservice.exceptions;
 
-public class CustomException extends Throwable {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+    public class CustomException extends Throwable {
     public CustomException(String invalid_booking_id) {
+    }
+
+    public CustomException() {
+
+    }
+
+    @ExceptionHandler(CustomException.class)
+        @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+        public CustomException handleCustomException(CustomException ce) {
+            return ce;
+        }
+
     }
 }
