@@ -14,7 +14,7 @@ public class BookingDao {
 
     public List<BookingInfoEntity> save(List<BookingInfoEntity> bookingInfoEntityList) {
         List<BookingInfoEntity> savedInfo = new ArrayList<>();
-        for(BookingInfoEntity bookingInfoEntity :bookingInfoEntityList) {
+        for(BookingInfoEntity bookingInfoEntity : bookingInfoEntityList) {
             savedInfo.add(save(bookingInfoEntity));
         }
         return savedInfo;
