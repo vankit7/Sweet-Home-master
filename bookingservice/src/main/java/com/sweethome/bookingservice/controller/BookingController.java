@@ -25,13 +25,13 @@ public class BookingController {
     BookingService bookingService;
 
     @PostMapping("/booking/{bookingId}/transaction")
-    public ResponseEntity<BookingInfoEntity> doPayment(@RequestBody PaymentDto paymentDetails) throws Exception, CustomException {
+    public ResponseEntity<BookingInfoEntity> doPayment(@RequestBody PaymentDto paymentDetails) throws Exception {
         BookingInfoEntity bookingInfo = bookingService.doPayment(paymentDetails);
         return new ResponseEntity<BookingInfoEntity>(bookingInfo, HttpStatus.CREATED);
     }
 
     @PostMapping("/booking")
-    public ResponseEntity<BookingInfoEntity> bookingDetails(@RequestBody BookingDto bookingRequest) throws Exception {
+    public ResponseEntity<BookingInfoEntity> bookingDetails(@RequestBody BookingDto bookingRequest) throws CustomException {
         BookingInfoEntity bookingInfo = bookingService.bookingDetails(bookingRequest);
         return new ResponseEntity<BookingInfoEntity>(bookingInfo, HttpStatus.CREATED);
     }
