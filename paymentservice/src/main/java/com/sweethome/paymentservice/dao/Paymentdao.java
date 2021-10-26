@@ -1,6 +1,6 @@
 package com.sweethome.paymentservice.dao;
 
-import com.sweethome.paymentservice.entity.PaymentInfoEntity;
+import com.sweethome.paymentservice.entity.TransactionDetailsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,13 +18,22 @@ public class Paymentdao {
         this.sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 
     }
-    public PaymentInfoEntity save(PaymentInfoEntity paymentInfoEntity) {
+    public TransactionDetailsEntity save(TransactionDetailsEntity transactionDetailsEntity) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(paymentInfoEntity);
+        session.save(transactionDetailsEntity);
         transaction.commit();
 
-        return paymentInfoEntity;
+        return transactionDetailsEntity;
+    }
+
+    public TransactionDetailsEntity findById(int transactionid) {
+        Session session = this.sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        TransactionDetailsEntity transactionDetailsEntity = session.get(TransactionDetailsEntity.class, transactionid);
+        transaction.commit();
+        session.close();
+        return transactionDetailsEntity;
     }
 
 

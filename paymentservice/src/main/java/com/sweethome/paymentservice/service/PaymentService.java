@@ -2,7 +2,7 @@ package com.sweethome.paymentservice.service;
 
 import com.sweethome.paymentservice.dao.Paymentdao;
 import com.sweethome.paymentservice.dto.Paymentdto;
-import com.sweethome.paymentservice.entity.PaymentInfoEntity;
+import com.sweethome.paymentservice.entity.TransactionDetailsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -19,13 +19,17 @@ public class PaymentService {
     }
 
     Paymentdao paymentdao;
-    public PaymentInfoEntity savePaymenttransaction(Paymentdto paymentdto){
+    public TransactionDetailsEntity savePaymenttransaction(Paymentdto paymentdto){
 
-        PaymentInfoEntity paymentInfo = new PaymentInfoEntity();
-        paymentInfo.setPaymentMode(paymentdto.getPaymentMode());
-        paymentInfo.setBookingId(paymentdto.getBookingId());
-        paymentInfo.setUpiId(paymentdto.getUpiId());
-        paymentInfo.setCardNumber(paymentdto.getCardNumber());
-        return paymentdao.save(paymentInfo);
+        TransactionDetailsEntity transactionInfo = new TransactionDetailsEntity();
+        transactionInfo.setPaymentMode(paymentdto.getPaymentMode());
+        transactionInfo.setBookingId(paymentdto.getBookingId());
+        transactionInfo.setUpiId(paymentdto.getUpiId());
+        transactionInfo.setCardNumber(paymentdto.getCardNumber());
+        return paymentdao.save(transactionInfo);
+    }
+
+    public TransactionDetailsEntity getTransactionEntity(int transactionId) {
+        return paymentdao.findById(transactionId);
     }
 }

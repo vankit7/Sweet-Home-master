@@ -39,7 +39,7 @@ public class BookingService {
     @Value("${url.service.payment}")
     private String paymentServiceUrl;
 
-    public static ArrayList<String> getRoomNumbers(int numOfRooms){
+    public ArrayList<String> getRoomNumbers(int numOfRooms){
         Random rand = new Random();
         int UpperBound = 100;
         ArrayList<String> roomList = new ArrayList<>();

@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Table(name = "transaction")
 @Entity
-public class PaymentInfoEntity {
+public class TransactionDetailsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -62,7 +62,7 @@ public class PaymentInfoEntity {
 
     @Override
     public String toString() {
-        return "PaymentInfoEntity{" +
+        return "TransactionDetailsEntity{" +
                 "transactionId=" + transactionId +
                 ", paymentMode='" + paymentMode + '\'' +
                 ", bookingId=" + bookingId +
