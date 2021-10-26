@@ -5,20 +5,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
-    public class CustomException extends Throwable {
-    public CustomException(String invalid_booking_id) {
-    }
-
-    public CustomException() {
-
-    }
-
-    @ExceptionHandler(CustomException.class)
-        @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-        public CustomException handleCustomException(CustomException ce) {
-            return ce;
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public class CustomException extends RuntimeException {
+        public CustomException() {
+            super();
+        }
+        public CustomException(String message, Throwable cause) {
+            super(message, cause);
+        }
+        public CustomException(String message) {
+            super(message);
+        }
+        public CustomException(Throwable cause) {
+            super(cause);
         }
 
     }
-}

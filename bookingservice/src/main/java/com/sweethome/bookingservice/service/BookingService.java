@@ -79,7 +79,7 @@ public class BookingService {
             throw new CustomException("Invalid mode of payment");
         }
         int bookingId = paymentDetails.getBookingId();
-        Optional<BookingInfoEntity> bookingInfoOptional = bookingDao.findById(bookingId);
+        Optional<BookingInfoEntity> bookingInfoOptional = Optional.ofNullable(bookingDao.findById(bookingId));
         if(bookingInfoOptional.isPresent()) {
             BookingInfoEntity bookingInfo = bookingInfoOptional.get();
             int transactionId = restTemplate.postForObject(url, paymentDetails, Integer.class);

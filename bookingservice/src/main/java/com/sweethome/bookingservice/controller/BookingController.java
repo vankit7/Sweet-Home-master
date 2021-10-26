@@ -35,13 +35,5 @@ public class BookingController {
         BookingInfoEntity bookingInfo = bookingService.bookingDetails(bookingRequest);
         return new ResponseEntity<BookingInfoEntity>(bookingInfo, HttpStatus.CREATED);
     }
-    @Controller
-    public class MainController {
 
-        @GetMapping("/")
-        public void index() throws CustomException {
-            throw new CustomException();
-        }
-
-    }
 }
