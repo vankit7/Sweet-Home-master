@@ -24,9 +24,9 @@ public class PaymentController {
         return paymentInfo.getTransactionId();
     }
 
-    @GetMapping("/transaction/{transactionId}")
-    public ResponseEntity<PaymentInfoEntity> paymentDetails() throws Exception {
-        PaymentInfoEntity paymentInfo = paymentService.savePaymenttransaction();
-        return new ResponseEntity<PaymentInfoEntity>(paymentInfo, HttpStatus.CREATED);
-    }
+//    @GetMapping("/transaction/{transactionId}")
+//    public ResponseEntity<PaymentInfoEntity> paymentDetails() throws Exception {
+//        PaymentInfoEntity paymentInfo = paymentService.savePaymenttransaction();
+//        return new ResponseEntity<PaymentInfoEntity>(paymentInfo, HttpStatus.CREATED);
+//    }
 }
