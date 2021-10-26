@@ -15,12 +15,13 @@ import org.springframework.web.client.RestTemplate;
 
 import java.awt.print.Book;
 import java.lang.reflect.Array;
+import java.net.URI;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.Random;
-
 @Service
 public class BookingService {
 
@@ -73,7 +74,7 @@ public class BookingService {
 
         //call payment service and get paymentID to save booking
         System.out.println(paymentDetails.toString());
-        String url = this.paymentServiceUrl + "/transaction";
+        String url = this.paymentServiceUrl;
 
         if (!(paymentDetails.getPaymentMode().trim().equalsIgnoreCase("UPI") || paymentDetails.getPaymentMode().trim().equalsIgnoreCase("CARD"))) {
             throw new CustomException("Invalid mode of payment");
@@ -82,6 +83,9 @@ public class BookingService {
         Optional<BookingInfoEntity> bookingInfoOptional = Optional.ofNullable(bookingDao.findById(bookingId));
         if(bookingInfoOptional.isPresent()) {
             BookingInfoEntity bookingInfo = bookingInfoOptional.get();
+
+            //URI uri = new URI(url);
+
             int transactionId = restTemplate.postForObject(url, paymentDetails, Integer.class);
             bookingInfo.setTransactionId(transactionId);
             bookingDao.update(bookingInfo);
