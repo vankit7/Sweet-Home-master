@@ -19,8 +19,8 @@ public class PaymentController {
     PaymentService paymentService;
 
     @PostMapping("/transaction")
-    public Integer paymentDetails(@RequestBody Paymentdto bookingRequest) throws Exception {
-        TransactionDetailsEntity transactionInfo = paymentService.savePaymenttransaction(bookingRequest);
+    public Integer paymentDetails(@RequestBody Paymentdto paymentRequest) throws Exception {
+        TransactionDetailsEntity transactionInfo = paymentService.savePaymenttransaction(paymentRequest);
         return transactionInfo.getTransactionId();
     }
 
