@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Sweet-Home-master.iml" filepath="$PROJECT_DIR$/.idea/Sweet-Home-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Sweet-Home.iml" filepath="$PROJECT_DIR$/.idea/Sweet-Home.iml" />
       <module fileurl="file://$PROJECT_DIR$/bookingservice/bookingservice.iml" filepath="$PROJECT_DIR$/bookingservice/bookingservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/eurekaserver/eurekaserver.iml" filepath="$PROJECT_DIR$/eurekaserver/eurekaserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificationservice/notificationservice1.iml" filepath="$PROJECT_DIR$/notificationservice/notificationservice1.iml" />
