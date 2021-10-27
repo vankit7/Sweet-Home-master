@@ -11,12 +11,13 @@ import java.util.Properties;
 import java.util.Set;
 
 public class Consumer {
+
     public static void main(String[] args) {
 
         String KafkaServer = "ec2-100-24-87-25.compute-1.amazonaws.com:9092";
         Properties props = new Properties();
         props.setProperty("bootstrap.servers", KafkaServer);
-        props.setProperty("groupId", "sweethome");
+        props.setProperty("group.id", "sweethome");
         props.setProperty("enable.auto.commit", "true");
         props.setProperty("auto.commit.interval.ms", "1000");
         props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");

@@ -74,7 +74,7 @@ public class BookingService {
 
         //call payment service and get paymentID to save booking
         System.out.println(paymentDetails.toString());
-        String url = this.paymentServiceUrl;
+        String url = this.paymentServiceUrl + "/transaction";
 
         if (!(paymentDetails.getPaymentMode().trim().equalsIgnoreCase("UPI") || paymentDetails.getPaymentMode().trim().equalsIgnoreCase("CARD"))) {
             throw new CustomException("Invalid mode of payment");
@@ -84,9 +84,8 @@ public class BookingService {
         if(bookingInfoOptional.isPresent()) {
             BookingInfoEntity bookingInfo = bookingInfoOptional.get();
 
-            //URI uri = new URI(url);
-
             int transactionId = restTemplate.postForObject(url, paymentDetails, Integer.class);
+            System.out.println("Here "+transactionId);
             bookingInfo.setTransactionId(transactionId);
             bookingDao.update(bookingInfo);
             String message = "Booking confirmed for user with aadhaar number: " + bookingInfo.getAadharNumber() +
